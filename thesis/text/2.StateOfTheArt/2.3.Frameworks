@@ -1,0 +1,42 @@
+
+2.3 Frameworks
+!TODO!
+Write introduction about frameworks here
+
+2.3.1 Tensorflow
+(https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45166.pdf)
+(https://www.tensorflow.org/)
+
+Tensorflow is a free machine learning software library that operates at large scale and in heterogenous environments. Tensorflow was developed by Google Brain who had previous experience in this field with their first generation system, DistBelief(cite here?). The initial version of Tensorflow was released in 2015. Four years later, in 2019, an updated version of the library, Tensorflow 2.0, was released.
+
+The library focuses on the fields of Machine Learning and Artificial Intelligence and although it can be used for a wide range of tasks within these fields, Tensorflow has a particular target on training and inference on deep neural networks.
+
+(FIND ARTICLE TO CITE HERE)
+Currently, Tensorflow is one of the most popular Machine Learning frameworks, being constantly maintained and expanded by an active community of developers. One of the reasons for its popularity is that building and training models is very easy and intuitive. Tensorflow offers high-level APIs like Keras, which provides immediate model iteration and easy debugging. In addition to building and training a model, TensorFlow can also help load the data to train the model, and deploy it using TensorFlow Serving.
+
+!TODO!: talk about how we used Tensorflow in the project.
+
+
+2.3.2 Scikit-learn
+(https://arxiv.org/pdf/1309.0238.pdf)
+(https://scikit-learn.org/stable/)
+
+Scikit-learn is a free and open-source machine learning library for Python. The library started as a Google Summer of Code project in 2007 and its codebase was rewritten by other developers in 2010.
+
+Scikit-learn aims to provide integration with a wide variety of state-of-the-art machine learning algorithms focusing on helping machine learning beginners to better understand this field and practice more, as it emphasizes on ease of use, performance, documentation and API consistency. Even though the API of this library is easy to use, Scikit-learn requires, however, basic Python knowledge.
+
+A notable difference between this library and other Python based libraries is that Scikit-learn depends only on numpy and scipy libraries. This facilitates easy distribution for the library across  different environments.
+
+Scikit-learn offers easy access to classic linear machine learning methods for classifications such as Support Vector Machines(SVM), Random Forest or Naive Bayes which were covered in the previous section. This aspect of easy usability and fast development represents the main reason for choosing to use Scikit-learn in our experiments with linear models.
+
+
+2.3.3. SpaCy
+(https://spacy.io/)
+(https://spacy.io/usage/layers-architectures/#thinc)
+(https://thinc.ai/docs/)
+
+SpaCy is an open-source software library for advanced Natural Language Processing that was firstly released in 2015. SpaCy focuses on providing state of the art solutions especially for production usage thus helping developers to build applications that better understand large volumes of textual data.
+
+SpaCy library provides a variety of practical tools such as pretrained word vectors, named entity recognition, text classification, lemmatization and morphological analysis. SpaCy offers support for over 66 languages and has 73 trained pipelines for 22 languages. Spacy library would be a good choice for our further research in anonymizing our corpus.
+
+SpaCy uses Thinc, a lightweight deep learning library, that offers an API for creating models based on layers imported from other Python libraries such as PyTorch or Tensorflow. Therefore, Think can be used as a wrapper around already defined models and workflows in order to allow easy integration for SpaCy.

@@ -1,0 +1,49 @@
+-rezumat despre cum rnn urile sunt foarte incete de antrenat + vanishing gradient
+-apoi prezzentam upgrade-urile adica 
+-- LSTM: si mai incete
+-- GRU nu la fel de incete
+
+-aceste arhitecturi nu se folosesc de capabilitatea gpurilor din ziua de azi care propun o paralelizare masiva a operatiilor
+
+apare problema paralelizarii pentru date secventiale
+
+la transformers nu exista conceptul de timestamp, se paseaza tot inputul deodata
+
+
+As presented in the previous section, Recurrent Neural Networks architectures present a few disadvantages. The most important of them is related to the fact that their process of training is slow. Therefore, training such a model on big textual data would require a lot of time. This problem is due to the fact that RNNs can`t be parallelized and, therefore can not make use of today`s GPU technology.
+
+Humans can comprehend multiple meanings of an input based on how that certain input is processed. For example, you can go through a sentence both ways and form multiple contexts. Therefore, a one-way traversing of a sentence could not be enough in order to determine its full meaning. Having this in mind it seems that trying to parallelize such a task of bilateral sequential processing of input might come as difficult and ambiguous.
+
+
+(SHOULD CITE THE PAPER 'ATTENTION IS ALL YOU NEED')
+
+This is the problem that Transformer architectures overcome. This architecture was firstly introduced as a method for text translation, being later adopted and modified in order to perform other tasks like classification.
+
+(INSERT Transformer picture here)
+
+A Transformer architecture is made up of 2 crucial parts: an encoder and a decoder. 
+
+The encoder takes all the input and generates embeddings for all the input. This task can be easily parallelized as there is no need for sequential processing of the input. But how can an encoder manage to generate accurate embeddings for a sequential input if all the parts of the input are processed simultaneously? Every part of the input is embedded and passed a positional encoding which is a representation of its position in the given input. This gets passed to the encoder where it goes through a Multi-Head Attention layer and a Feed Forward layer. The Multi-Head Attention block helps in computing what parts of the whole input are relevant for one part of an input. As an example, for a sentence which contains words that are strongly connected, this block should output attention vectors that suggest the strong connection between the 2 words. In this way, the network can learn how to manage context and connect parts of the input without sequential parsing. The Feed Forward layer is represented by a simple neural network that processes the attention vectors from the previous layer.
+
+The decoder works sequentially, outputting a word that will then get passed as input to itself. Therefore, at a time t, the decoder receives as input the output it gave at the time t-1. This presented input is embedded just like the encoder input and passed into a Masked Multi-Head Attention layer which will determine the attention vectors for every word considering that the right hand side of the sentence has not been predicted. This means that at a time t, this attention layer will output a vector that will have just t relevant elements, the remaining elements of the vector being unconsidered. The output vectors from the previously presented layer and the output of the encoder will serve as input for the next block of the decoder: the Multi-Head Attention block. This block has the same function as the one from the encoder. The last block of the decoder is represented by a simple Feed-Forward layer. The output of this last block will go through a linear layer of neurons that represents possible predictions. One prediction will be chosen from these and passed to the decoder input until the end of the input is reached.
+
+
+The Transformer architecture has a clear and modular structure. The encoder can basically understand language, grammar and context being able to output accurate representations of a given input. The decoder can understand language and can generate text sequences. Therefore, this 2 components can be used by themselves in order to build more specific task-oriented models. 
+
+One model that uses only decoders is Generative Pre-trained Transformer 3. GPT-3 was introduced by OpenAI(!CITE!) and it can generate text in multiple configurations. As this thesis focuses more on classification models, we will next cover more details about architectures that use encoders.
+
+
+
+Bidirectional Encoder Representations from Transformers or BERT is a model developed by Google that is currently used in Google`s majority of applications that require natural language processing. BERT solves problems that require language understanding such as text summarization, sentiment analysis and question answering. 
+
+The architecture of BERT is fairly simple and concise: multiple stacks of encoders. BERT architectures can contain from 2 to 24 layers of encoders thus succeeding to fit any kind of environments. (!TODO! complete more info about BERT INPUTS AND OUTPUTS)
+
+(!INSERT PICTURE https://towardsdatascience.com/what-exactly-happens-when-we-fine-tune-bert-f5dc32885d76)
+
+(https://arxiv.org/pdf/1810.04805.pdf)
+A BERT model requires pre-training in order to learn language and context. This phase is divided in 2 sub-phases: MLM and NSP.
+Masked Language Model(MLM) involves training BERT with sentences that have masked words. At this phase, BERT learns to predict accurate words for the given masks. Besides this, MLM enables understanding not only the left-to-right context of the input sentences but also the right-to-left context.
+
+Next Sentence Prediction(NSP) helps BERT to learn the order between sentences. Inputs consisting of 2 sentences are fed into the model and a binary output is expected: correct or incorrect order.
+
+After the pre-training phase, a BERT model has an understanding of the language and can be fine-tuned in order to learn specific tasks such as offensive language detection. The fine-tuning phase involves taking the pre-trained model, adding some extra layers at the end of the BERT encoders and training this network in a supervised environment.

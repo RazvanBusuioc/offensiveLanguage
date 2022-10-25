@@ -1,0 +1,60 @@
+
+============================== Naive Bayes
+(https://www.youtube.com/watch?v=lFJbZ6LVxN8&ab_channel=NormalizedNerd) - acest indian dragut m-a facut sa inteleg NB
+(https://en.wikipedia.org/wiki/Naive_Bayes_classifier)
+
+Naive Bayes is a simple method for assigning labels to instances that are usually represented by a list of features. The interesting part of this method is that it assumes that every feature of one instance in independent of the other features belonging to the same instance. In a real life problem, that indeed might not be the wisest choice as features could be strongly connected, but this method represents a good starting point for a baseline or proof-of-concept model. The previous presented assumption that this classifiers depends on represents the origin of the method`s name: "Naive" Bayes.
+
+Therefore, Naive Bayes classifier is reduced to a simple conditional probability problem. Considering that a set of features X=(x1, x2, .., xn) should be labeled as Y (where Y can take a value from the following list [y1, y2, ...yk]), this classifier computes the following probability: P(yi| x1, x2, ..., xn) for every yi element from the previously mentioned list. For a small number of features, this presented technique can be feasible, but there is a problem when the instances have a large number of features. When this is the case, Bayes` theorem can help to decompose the formula:
+
+P(yi| x1, x2, ..., xn) = (P(y1) * P(x1, x2, ..., xn | y1)) / P(x1, ,x2, ... xn)
+
+As the denominator of this formula is always constant, the focus of the formula shifts on the numerator of the fraction. Because the Naive Bayes methods assumes that every feature is independent the numerator is equal to:
+
+    P(y1) * P(x1|y1) * P(x2|y1) * .. * P(xn|y1)
+
+which can be easily calculated from the set of features in the train dataset.
+
+When working with continuous data, Gaussian Naive Bayes technique can be used. This method involves assuming that the values associated with a certain label are distributed according to a Gaussian distribution. //IDK IF THIS SHOULD BE INCLUDED (kinda copy paste of wiki)
+
+In the field of Natural Language Processing, Multinomial Naive Bayes is used, this technique involving that the set of features is actually a set of frequencies corresponding to a list of tokens. 
+
+
+
+
+
+============================== Random Forest
+(https://www.youtube.com/watch?v=ok2s1vV9XW0&ab_channel=codebasics)
+(https://www.youtube.com/watch?v=PHxYNGo8NcI&ab_channel=codebasics) - inca un indian dragut
+(https://www.worldscientific.com/doi/suppl/10.1142/9097/suppl_file/9097_chap01.pdf) - take tree from page 14
+
+Random Forest is a simple yet effective technique that can be used for classification problems. This method is based on decision trees which we will cover next.
+Decision trees are basically a rooted tree data structure that can point to a decision based on a certain path from the root to a leaf. Each level of the tree involves further splitting the decision paths based on a feature. Therefore, being given a dataset with x entries/instances, every instance containing a set of features X=(x1,x2,...xk) and a label Y, we ca n construct a decision tree with a maximum level of k (the number of features for an instance), every level corresponding to a choice based on the level`s feature.
+
+! INSERT IMAGE HERE !
+". Figure 1.6 describes another example of a decision tree that predicts whether or not a potential customer will respond to a direct mailing"
+
+In this tree, first level of decision is based on the person`s age. Going deeper on the path that assumes the person`s age is higher than 30 y.o., a new decision is taken based on the gender of the person. If the person is female, a last decision is taken based on the last mail response of that person.
+
+Based on the nature of a dataset, decision trees accuracy may vary, some cases being proven as suitable for a decision tree approach, while others being proven otherwise. In any of the above mentioned cases, decision tree results may be different depending on the order of the features.
+Selecting the ordering of the features might prove as a tricky task, although it all comes to choosing the ordering that implies a minimum entropy for every decision layer. Following the given statement, features that weight more will be place closer to the root than features that are not correlated with the label of an entry. A problem with this kind of architectures is that for instances with a large number of features, big decision trees might be created, slowing down consistently the process of classification. In order to resolve such problems, pruning techniques are used in order to reduce the complexity of the decision tree.
+
+Random Forest classifiers involve breaking the training dataset into multiple batches and building a decision tree for each batch of data. Therefore, each decision tree will label an instance and the final label chosen by the Random Forest classifier will be represented by the majority vote.
+
+
+============================== XGBoost
+
+
+============================== SVM
+(https://link.springer.com/content/pdf/10.1007/BF00994018.pdf) - binary svm
+(https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4460898) - multiclass SVM
+
+
+Support Vector Machines are yet another type of linear method used for classification problems. This technique was firstly introduced in 1995(cite here) as a solution for binary classification problems. Given a training dataset of entries, each entry containing N features, a Support Vector Machines classifiers builds a N-dimensional space in which it places every entry of the dataset. Having all the dataset entries placed in this space, SVMs tries to separate the 2 categories of points by building a (N-1) dimensional hyperplane. The points from each class that are the closest to this hyperplane are called support vectors. SVMs makes sure that the distance from these support vectors to the chosen hyperplane is the longest, thus allowing for a maximum separation between the features of the 2 classes.
+
+! INCLUDE IMAGE FROM PAPER! (pg3)
+
+Although this method was proposed as a solution for binary classification problems, it was later extended for multi-class scenarios as well. This is achieved by reducing the multi-class problem into a series of binary classification problems. Every classification problem of this set can be solved with the binary SVM classification presented previously. One way to reduce a multi-class problem to a binary one would be to chose an one-versus-all approach, this involving differentiating one class from the remaining. Another approach would be to distinguish every existing pair of classes (one-versus-one method).
+
+
+We will cover the impact and accuracy of a Support Vector Machine model on a multi-class problem later as this thesis`s baseline model for experimenting was built using a SVM approach.

@@ -1,0 +1,4 @@
+ignore/*
+.vscode
+# ignore model files - bigger than 100MB
+*.h5

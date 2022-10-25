@@ -1,0 +1,88 @@
+As presented in the previous sections of the thesis, our experiments involved three configurations: SVM, BERT with FFN and BERT with CNN.
+
+For every configuration we have also adopted a transfer learning approach. Therefore, there exists a transfer learning version for every type of architecture. Moreover, for all neural architectures (BERT+FNN and BERT+CNN) we performed a hyperparameter optimization on both learning approaches. In the end, for every neural , 4 different models were built:
+\begin{itemize}
+    \item Model trained on FB-RO-Offense.
+    \item Hyperparameter optimized model trained on FB-RO-Offense.
+    \item Model trained on RO-Offense and FB-RO-Offense.
+    \item Hyperparameter optimized model trained on RO-Offense and FB-RO-Offense.
+\end{itemize}
+
+For the approaches that did not involve hyperparameter optimization, the first model created during the experiments phases was selected, while for the approaches that did involve optimization, we selected the model that presented the highest performance.
+
+The results were split in 2 sections: fine grained task and coarse grained task
+
+\begin{table}[H]\normalsize\linespread{1}
+% \centering
+\caption{Results for Fine Grained task}
+\label{tab:resultsFG}
+\begin{tabular}{ l c c c c c} 
+  \hline
+  \textbf{Model} &  \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{Micro-F1} & \textbf{Macro-F1}\\\hline
+  SVM & 0.60 & 0.45 & 0.45 & 0.60 & 0.44 \\
+  SVM transfer & 0.61 & 0.47 & 0.42 & 0.61 & 0.41 \\\hline
+  RoBERT+FFN & 0.73 & 0.79 & 0.66 & 0.72 & 0.46 \\
+  RoBERT+FFN optimized & 0.75 & 0.80 & 0.70 & 0.74 & 0.50\\
+  RoBERT+FFN transfer & 0.73 & 0.80 & 0.62 & 0.70 & 0.43\\
+  RoBERT+FFN transfer, optimized &   3,461 &   27.81\% \\\hline
+  RoBERT+CNN & 0.82 & 0.84 & 0.80 & 0.82 & 0.71\\
+  RoBERT+CNN optimized  & 0.84 & 0.86 & 0.81 & 0.83 & 0.72 \\
+  RoBERT+CNN transfer & 0.78 & 0.82 & 0.74 & 0.78 & 0.64 \\
+  RoBERT+CNN transfer, optimized & 0.82 & 0.84 & 0.79 & 0.81 & 0.70 \\\hline
+\end{tabular}
+\end{table}
+
+(!TODO! table interpretation) 
+
+
+The coarse grained task involved evaluating the models built for the fine grained task from a binary classification perspective. Therefore, predictions from the 3 offensive classes(PROFANITY, INSULT, ABUSE) have been unified under the OFFENSIVE label. A binary evaluation of the model was performed, obtaining the results displayed in Table \ref{tab:resultsCG}
+
+\begin{table}[H]\normalsize\linespread{1}
+% \centering
+\caption{Results for Coarse Grained task}
+\label{tab:resultsCG}
+\begin{tabular}{ l c c c c c} 
+  \hline
+  \textbf{Model} &  \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{Micro-F1} & \textbf{Macro-F1}\\\hline
+  SVM & 0.69 & 0.68 & 0.67 & 0.69 & 0.67 \\
+  SVM transfer & 0.69 & 0.69 & 0.63 & 0.68 & 0.63\\\hline
+  RoBERT+FFN & 0.83 & 0.86 & 0.70 & 0.83 & 0.82 \\
+  RoBERT+FFN optimized & 0.84 & 0.89 & 0.69 & 0.84 & 0.82\\
+  RoBERT+FFN transfer & 0.83 & 0.87 & 0.67 & 0.83 & 0.81\\
+  RoBERT+FFN transfer, optimized &   3,461 &   27.81\% \\\hline
+  RoBERT+CNN & 0.88 & 0.90 & 0.79 & 0.88 & 0.87 \\
+  RoBERT+CNN optimized & 0.90 & 0.88 & 0.87 & 0.90 & 0.89 \\
+  RoBERT+CNN transfer & 0.88 & 0.91 & 0.80 & 0.88 & 0.88 \\
+  RoBERT+CNN transfer, optimized & 0.89 & 0.90 & 0.82 & 0.89 & 0.88 \\\hline
+\end{tabular}
+\end{table}
+
+The above presented tables highlight the performance of the "RoBert+CNN optimized" model. Therefore, we will next present its confusion matrices in order to have a better understanding of the model`s performances and limitations.
+
+\begin{figure}[H]
+\centering
+\includegraphics{pics/FG-NORMALIZED-BERT-CNN-FBRO.png}
+  \caption{Fine Grained Confusion Matrix for the "RoBERT+CNN optimized" model}
+  \label{fig:FG-CM-BERT-CNN}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=8cm]{pics/CG-NORMALIZED-BERT-CNN-FBRO.png}
+  \caption{Coarse Grained Confusion Matrix for the "RoBERT+CNN optimized" model}
+  \label{fig:CG-CM-BERT-CNN}
+\end{figure}
+
+In terms of fine grained classification, the confusion matrix shows that the model lacks prediction accuracy when it comes to PROFANITY comments. It can be seen that many ABUSE and OTHER comments are labeled as PROFANITY. In the case of binary classification, the model seems able to accurately predict both types of comments. Nevertheless this model presents a slightly high rate of false negatives. All these mentioned aspects will be further discussed in Chapter \ref{chap:Discussions}
+
+As presented in Section \ref{section:workflow} a 4-way hyperparameter oprimization was approached during our experiments with neural architectures. Figure \ref{fig:HO-BERT-CNN-FBRO} presents the results of this process for "RoBERT + CNN" model.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm]{pics/wandb-BERT-CNN-FBRO.png}
+  \caption{Hyperparameter optimization for the "RoBERT+CNN" model}
+  \label{fig:HO-BERT-CNN-FBRO}
+\end{figure}
+
+
+(!TODO! - Frontend! (if forntend -> hyperparameter optimization interpretation))

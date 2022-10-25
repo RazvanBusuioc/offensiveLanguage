@@ -1,0 +1,35 @@
+- SVM??
+
+- RoBert
+
+This architecture is composed of a RoBert-base encoder that passes its CLS token to a feed forward network. 
+The BERT encoder receives as input the following:
+- input id : mappings between a token and its id
+- attention mask: used to prevent the model from taking into consideration padding tokens
+- token type id: used for BERT in Next Sentence Prediction task. will be filled with zeros in our case.
+
+The feed forward network is build upon 2 layers:
+-an input layer of size 32(this is passed to the hyperparameter optimization) with 'tanh' activation
+-an output layer of size 4 (one neuron for each class) with 'softmax' activation
+
+
+(!INSERT architecture of the model!)
+
+
+- RoBert + CNN
+
+This second architecture is composed of a RoBert-base encoder that passes its output to a CNN. The CNN passes its output to a feed forward network.
+The input for BERT is the same as the input from previous architecture
+
+The CNN is build upon 3 layers:
+- a 1D convolutional layer with kernel size of 2, 32 filters and 'ReLu' activation
+- a 1D convolutional layer with kernel size of 2, 64 filters and 'ReLu' activation
+- a pooling layer with a max pooling approach
+
+The feed forward network is build upon 3 layers:
+-an input layer of size 32(this is passed to the hyperparameter optimization) with 'tanh' activation
+-a dropout layer (!TODO! read about this)
+-an output layer of size 4 (one neuron for each class) with 'softmax' activation
+
+
+(!INSERT architecture of the model!)

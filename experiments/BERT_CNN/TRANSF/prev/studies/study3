@@ -1,0 +1,12 @@
+'learning_rate': 0.0006948104997285639, 'seed': 26, 'per_gpu_batch_size': 51}. 
+'learning_rate': 0.0006053654778786315, 'seed': 26, 'per_gpu_batch_size': 125}. 
+'learning_rate': 0.0006864075157528641, 'seed': 25, 'per_gpu_batch_size': 71}. 
+'learning_rate': 0.0006981480310576558, 'seed': 8, 'per_gpu_batch_size': 37}. 
+'learning_rate': 0.0008777030608963833, 'seed': 13, 'per_gpu_batch_size': 19}. 
+
+
+'learning_rate': 0.000972959568554855, 'seed': 3, 'per_gpu_batch_size': 95}. 
+'learning_rate': 0.00033107371019483695, 'seed': 2, 'per_gpu_batch_size': 58}. 
+'learning_rate': 0.000775063248789931, 'seed': 72, 'per_gpu_batch_size': 98}. 
+'learning_rate': 0.000543075080390868, 'seed': 93, 'per_gpu_batch_size': 33}. 
+'learning_rate': 6.033795470372884e-05, 'seed': 26, 'per_gpu_batch_size': 56}. 

@@ -1,0 +1,16 @@
+
+
+1 Context
+- popularitatea platforelor de social media etc
+
+2 problem
+- scaparea de sub control a limbajului vulgar in special in zonele in care nu exista metode  de filtrare a acestui tip de text
+
+3 Objectives
+- ne propunem sa construim un dataset cu comentarii de pe fb pentru detectia limbakjului jignitor
+- ne propunem experimentarea cu modele neurale pentru obtinerea unor rezultate cat mai bune
+
+4. proposed solution
+- solutia pe care o propunem este reprezentata de un numar diferit de modele antrenate in mai multe moduri care pot recunoaste atat limbaj ofensator cat si tipuri de limbaj ofensator
+
+5. Results represent

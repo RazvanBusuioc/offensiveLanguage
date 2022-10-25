@@ -1,0 +1,10 @@
+text,prediction,trueLabel
+baga-ti-as surubul in piulita!,OTHER,ABUSE
+sa-ti bag lebarul in sacosa!,ABUSE,ABUSE
+ce pula mea mai e de facut in cazul asta?,PROFANITY,PROFANITY
+sa-mi bag pula in toata ma-ta si in mortii ei!,ABUSE,ABUSE
+du-te dracu de aici ca esti chiar dobitoc,INSULT,ABUSE
+"daca esti prost de mic, cand esti mare doar te joci",INSULT,INSULT
+"mars la cotet, javra ce esti!",ABUSE,ABUSE
+astia chiar ne cred asa prosti?,INSULT,OTHER
+sunteti niste prapaditi!,INSULT,ABUSE

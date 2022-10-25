@@ -1,0 +1,8 @@
+-reiterare peste tot ce am facut in teza:
+    - prezentarea construirii unui dataset de natura comentarii de pe facebook
+    - prezentarea anotarii datasetului nostru si difererentele fata de datasetul mare
+    -am construit un model SVM baseline si 2 arhitecturi neurale bazate pe BERT, am facut transfer learning si optimizare de hyperparametrii
+    -am prezentat rezultatele tuturor configuratiilor, focusandu-ne pe cele mai performante modele
+    -am prezentat limitarile si greselile modelelor.
+
+-future work - reiterare ce am scris la discutii.

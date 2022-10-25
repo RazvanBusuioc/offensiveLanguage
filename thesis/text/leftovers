@@ -1,0 +1,17 @@
+
+\section{Results}
+The obtained results display the capabilities of the 3 procedures mentioned in Section \ref{sec:proposedSolution}. The BERT-based architecture that uses a Convolutional Neural Networks provides the best overall results, highlighting the importance of a transfer learning approach when trying to build a more mature and reliable model.
+
+
+arată variații în funcție de arhitectura modelului experimentat, parametrii și setul de date, cel mai performant model obținând o acuratețe de 85\% pentru o clasificare ce implică 4 clase.}
+
+
+
+În ultimul deceniu, popularitatea platformelor de social-media a crescut în rândul oamenilor de pe tot globul, unii dintre ei profitând de această oportunitate pentru a prolifera limbaj ofensator și instigator la ura. Deși unele platforme folosesc metode pentru filtrarea textului, acelea care aleg să nu filtreze sunt exploatate de utilizatorii ce tind să folosească limbaj ofensator și abuziv. Această lucrare prezintă crearea și adnotarea corpusului FB-RO-Offense, un set de date ce conține 8 mii de comentarii generate de utilizatori în cadrul transmisiilor live de pe Facebook. Munca noastră a implicat experimente cu acest set de date, dar și cu alt corpus în limba română pentru detecția limbajului ofensator, RO-Offense. Rezultatele obținute arată variații în funcție de arhitectura modelului experimentat, parametrii și setul de date, cel mai performant model obținând o acuratețe de 85\% pentru o clasificare ce implică 4 clase.
+
+
+In the past decade, social media platforms have gained a lot of popularity amongst people all around the globe, some of them seizing this opportunity in order to proliferate offensive language and hate speech. Although some platforms use text filtering techniques, those that choose not to do this are being exploited by users that tend to use offensive and abusive language. This work presents the creation and annotation of the FB-RO-Offense corpus, an offensive speech dataset containing 8 thousand user-generated comments from Facebook live broadcasts. Our work involved experimenting with the FB-RO-Offense dataset as well as with another Romanian language dataset for offensive language, RO-Offense. Obtained results show variation depending on model architecture, parameters and dataset, our best performing model reaching an accuracy score of 85\% for a 4-way classification.
+
+
+
+În ultimul deceniu, popularitatea platformelor de social-media a crescut în rândul oamenilor de pe tot globul, unii dintre ei profitând de această oportunitate pentru a prolifera limbaj ofensator și instigator la ura. Deși unele platforme folosesc metode pentru filtrarea textului, acelea care aleg să nu filtreze sunt exploatate de utilizatorii ce tind să folosească limbaj ofensator și abuziv. Această lucrare prezintă crearea și adnotarea corpusului FB-RO-Offense, un set de date ce conține 8 mii de comentarii generate de utilizatori în cadrul transmisiilor live de pe Facebook. Munca noastră a implicat experimente cu acest set de date, dar și cu alt corpus în limba română pentru detecția limbajului ofensator, RO-Offense. Pentru clasificarea ce implica 4 clase, rezultatele obținute prezinta un F1-score de 0.83, iar pentru clasificarea binara un F1-score de 0.90.

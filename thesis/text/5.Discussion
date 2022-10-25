@@ -1,0 +1,16 @@
+\chapter{Discussions}
+- ce vom atinge pe parcursul acestui capitol
+- discutii despre cele mai bune modele bazate pe cele 2 tabele si pe cele 2 confusion matrices
+- discutii despre optimizarea de hiperparametrii prezentata anterior
+
+\section{Error Analysis}- limitarile arhitecturii pentru strangerea de come ntarii -> future work = automatizare si poate facebook API
+
+- discutii bazate pe confusion matrix urile anterioare
+- discutii bazate pe exemple prezise gresit - PENTRU FIECARE MODEL- FACEM TABEL ******
+- discutii despre maturitatea fiecarui model - EXEMPLE PROPRII SI AUTENTICE - PENTRU FIECARE MODEL- FACEM TABEL ******
+
+\section{Limitations}
+- limitarile arhitecturii pentru strangerea de comentarii -> future work = automatizare si poate facebook API
+- limitarile adnotarii (doaar o singura persoana la adnotat - a fost jale!)
+- limitarile datasetului si transfer learningului (diferenta intre clase)
+- limitarile modelelor aferente prezentarii ******

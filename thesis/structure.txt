@@ -1,0 +1,117 @@
+0. Abstract
+
+1. Introduction
+
+
+2. State of the art
+
+	2.1. Datasets and Methods for offensive speech
+
+		2.1.1. Hate Speech and Offensive Language
+			- https://paperswithcode.com/dataset/hate-speech-and-offensive-language
+			- should talk about how it was computed - see homepage
+			- should talk about it s classes
+			- should talk about the fact that every text is annotated by > 3 ppl
+			- extract info from their papers!!!!
+
+		2.1.2. Hate Speech
+			- https://paperswithcode.com/dataset/hate-speech
+			- https://paperswithcode.com/paper/hate-speech-dataset-from-a-white-supremacy
+			- should talk about how it was computed - see homepage
+			- should talk about it s classes - binary class
+			- should talk about the source of the dataset - neonazist forum
+			- extract info from their papers!!!!
+		
+		2.1.3. OLID (Offensive Language Identification Dataset)
+			- https://paperswithcode.com/dataset/olid
+			- https://scholar.harvard.edu/malmasi/olid
+			- should talk about how it was computed - see homepage
+			- should talk about it s classes - 3 class categories
+			- extract info from their papers!!!!
+		
+	2.2 Text classification
+
+		2.2.1 Classical ML
+
+			2.2.1.1. Classifiers
+
+				- Naive Bayes
+				- Random Forest
+				- XGBoost
+				- SVM
+			
+			2.2.1.2. Neural Networks
+
+				- CNN
+				- RNN
+				- LSTM
+				- GRU
+
+		2.2.2 Bert based architectures
+
+				-TODO
+
+	2.3 Frameworks
+
+		2.3.1. tensorflow
+		2.3.2. Scikit learn
+		2.3.3. Spacy
+
+3. Method
+
+	3.1 Corpora
+		- shouold talk about the diff between the datasets
+
+		3.1.1 ROOffense 
+			- should ask Andrei about it
+			- should talk about how it was computed, features, etc
+
+		3.1.2 fbROOffense
+
+			3.1.2.1. Data extraction
+				- talk about all the trials - wikipedia, local newspapers, etc
+				- talk about political facebook broadcasts wide variety of language
+				- talk about inaboradibility of facebook api -> selenium library
+				- talk about selenium and the method for extraction
+				- talk about all 30k gathered comments and how we narrowed them down to ~8k
+				- talk about labeling the comments:
+					- coarse grained
+					- fine grained
+				- talk about labeling rules and exceptions
+			
+			3.1.2.2. Graphs, Distribution, etc
+				- all kind of metrics
+			
+			3.1.2.3 Scoring rubric
+				- ask for more details about this chapter??
+
+	3.2 Neural architectures / Workflow
+
+
+4. Results
+
+	- 1st step of learning -> ROOffense dataset
+		- accuracy table for all the models
+		- coarse grained confusion matrix for the best (and the 2nd best maybe)
+		- fine grained confusion matrix for the best (and the 2nd best maybe)
+		- talk about problems, overcomed things, etc.
+		- maybe present a tiny user interface with the product
+
+	- 2nd step of learning -> ROOffense dataset
+		- accuracy table for all the models
+		- coarse grained confusion matrix for the best (and the 2nd best maybe)
+		- fine grained confusion matrix for the best (and the 2nd best maybe)
+		- talk about problems, overcomed things, etc.
+		- maybe present a tiny user interface with the product
+
+	- talk about problems with the model.(ce detecteaza gresit si de ce)
+
+5. Discussions
+	- Benefits
+	- Drawbacks
+	- Problems encountered
+		- talk about data extraction - had to keep an eye on political figures in order to run the script when they started broadcasting
+		- talk about data annotation - many corner case, A LOT of misspelling
+
+
+6. Conclusions and future work

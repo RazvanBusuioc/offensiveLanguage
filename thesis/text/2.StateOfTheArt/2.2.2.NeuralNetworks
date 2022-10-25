@@ -1,0 +1,71 @@
+Introduction about neural networks and the fact that they look like human brain cells
+
+============================== CNN
+(https://arxiv.org/pdf/1511.08458.pdf)
+(https://arxiv.org/pdf/1408.5882.pdf)
+(https://proceedings.neurips.cc/paper/2015/file/250cf8b51c773f3f8dc8b4be867a9a02-Paper.pdf)
+
+One form of Artificial Neural Networks is the one of Convolutional Neural Networks or CNNs. CNNs have been primarily used to solve computer vision and image recognition tasks as it`s architecture is suitable for this kind of problems.
+
+! INSERT PICTURE 2 FROM (https://arxiv.org/pdf/1511.08458.pdf)
+
+As the above picture presents, a CNN contains 3 types of layers: convolutional layers, pooling layers and fully connected layers.
+
+The convolution layers are using certain kernels or filters in order to extract features from the previous layer. After a convolutional layer, a pooling layer is usually placed. This assures that the size of the samples shrinks in order to reduce computation, keeping the loss of information at a minimum. Even though the presented example has only 1 convolutional layer, CNN architectures can contain multiple such layers. The activation function for these layers is also important. In the field of image recognition, ReLu is preferred as it drops all the negative values from the features. At the end of the convolutional layers, the features are usually flatten using a flatten layer and then connected to one or more fully connected layers. The output is represented by a layer of N neurons that should activate for the according predicted classification.
+
+Comparing it with an usual fully connected Artificial Neural Network, the above presented architecture involves that it`s neurons will be connected 1to only a small portion of the neurons from the previous layer. This results in a much smaller number of parameters to train, thus a faster trainable architecture.
+
+
+
+Even though the main focus of CNNs is towards the computer vision field, their architecture can be used, with some variation in the field of Natural Language Processing.
+One way of using CNNs for fields of NLP like sentence classification, as stated in this paper (https://arxiv.org/pdf/1408.5882.pdf), is to use convolution windows that are applied to one or more neighbor words in a sentence in order to discover a new feature. 
+
+!INSERT PICTURE 1 FROM (https://arxiv.org/pdf/1408.5882.pdf)
+
+This kind of model involves using multiple filters with different windows sizes in order to obtain the best feature for every type of filter. The best fitting feature for a certain filter will later on be passed to a fully connected layer that will help to make a prediction. This presented approach involves a word-level embedding. Techniques such as word2vec or Term Frequency-Inverse Document Frequency can be used in order to obtain such a model.
+
+
+In this paper(https://proceedings.neurips.cc/paper/2015/file/250cf8b51c773f3f8dc8b4be867a9a02-Paper.pdf), a character-level embedding is used in order to build a Convolutional Neural Network for sentence classification. 
+
+!INSERT PICTURE 1 FROM (https://proceedings.neurips.cc/paper/2015/file/250cf8b51c773f3f8dc8b4be867a9a02-Paper.pdf)
+
+Characters are encoded using a one-hot approach and passed to the neural network as a list of vectors(matrix). The presented architecture contains 6 layers of convolutions that are followed by one flatten layer and 2 fully connected layers.
+
+
+============================== RNN
+(https://www.cs.bham.ac.uk/~jxb/INC/l12.pdf)
+
+One problem with the above mentioned Artificial Neural Networks is that they lack understanding context. When trying to solve problems where input order does matter, such as sentiment analysis or detection of offensive language, Recurrent Neural Networks can improve the solution.
+
+A recurrent Neural Network structure is similar to a normal network structure. The difference is that input is fed sequentially into the network. Every computed part of the output will also be fed into the network for the process of the next part of input. Therefore, parts of input that require context or that are strongly connected with previous parts of the input will now be interpreted accordingly.
+
+! INSERT PICTURE PG 7 (https://www.cs.bham.ac.uk/~jxb/INC/l12.pdf)!
+
+NLP tasks can benefit from this kind of approach, as language processing is strongly dependent on context and meaning of the previous words. For example, feeding the sentence "What time is it?" to a normal neural network would result in poor results comparing to feeding the sentence to a model which addresses the RNN architecture.
+
+Although this method has clear benefits, it still falls short performance wise.
+Firstly, training such a Recurrent Neural Network is more time consuming because of the sequential way of feeding input. A normal network architecture processes all the input at once which, even though has its disadvantages, it can save a lot of training time. 
+
+Another problem with this architecture lies in the back propagation process of network training. After one batch of training is over, a gradient value is computed based on the current loss function of the training batch. The gradient propagates backwards to the start of the network helping to adjust internal weights of the network for better future predictions. The problem is that with every layer the gradient value decreases. Therefore, the gradient value will decrease up to a point where it will be insignificant for the earlier layers. Therefore, the input layers will fail to learn and the model`s memory will be shorten. Because of this, context will be lost over time when working with long sentences.
+
+The above presented problem is called the Vanishing Gradient Problem and in the following parts of the thesis we will discuss approaches that can help solve this.
+
+
+============================== LSTM
+
+As mentioned in the previous section, Recurrent Neural Networks suffer from short term memory problems, making it very hard for a RNN to remember context when processing long inputs. Long Short Term Memory or LSTMs are recurrent architecture that, as their name states, can hold prior information from the input for a longer period of time. In this manner, over-time loss of context is reduced and the network can have a better understanding of the overall input.
+
+The LSTM architecture is a bit more complex compared to the one of RNN presented above. A LSTM cell takes as input not only the hidden state of the previous cell and the current timestamp input but it also takes as input the state from the previous cell. This state given as input represents the memory of the cell and can be changed throughout the cell`s gates. A LSTM cell consists of 3 gates. The forget gate decides what information from the previous cells should be kept. Based on the current timestamp input, the previous context might be totally irrelevant so this gate helps in dumping deprecated and unnecessary information. The input gates assures that the current cell state is updated accordingly. This gate is very important when the current part of input is context-important as it will be concatenated with the current cell state and be passed to the next cells. Based on the computations from these two states, the current cell state can be calculated. The output gate helps computing the hidden state that helps prediction and that will be fed to the next LSTM Unit.
+
+INSERT (https://www.researchgate.net/figure/The-structure-of-the-Long-Short-Term-Memory-LSTM-neural-network-Reproduced-from-Yan_fig8_334268507)
+
+Even though LSTM architectures solve the Vanishing Gradient problem, they require a lot of time and resources for training. The sequential feeding of the input alongside with the complexity of the architecture represent the main drawbacks for this approach.
+
+
+============================== GRU
+
+As stated in the previous section, LSTMs lack performance as far as training time is concerned. In order to reduce this problem, Gated Recurrent Unit cells are used. A GRU cell removes the concept of a cell state and uses a hidden state in order to transfer information throughout the network. This alone represents a consistent improvement over the LSTM. GRU cell architecture is built upon 2 gates instead of 3. The update gate is a combination of the LSTMs forget and input gates. This gate decides what information might be deprecated and needs to be dumped and what information from the current timestamp input might be relevant in order to build the hidden state that will connect to the next GRU cell. The reset gate is responsible for trimming past information that might occur as irrelevant for the current input`s context.
+
+INSERT (https://www.researchgate.net/figure/Gated-Recurrent-Unit-GRU_fig4_328462205)
+
+Because of its reduced number of gates, the GRU cell performs less computations than the LSTM one and can obtain better training times. In the view of the fact that the concept of cell state is removed, GRU based networks are more compact and present a small number of connections between the nodes.

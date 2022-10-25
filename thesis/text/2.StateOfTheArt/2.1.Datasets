@@ -1,0 +1,55 @@
+2.1. Datasets and Methods for offensive speech
+
+2.1.1. Hate Speech and Offensive Language
+    - https://paperswithcode.com/dataset/hate-speech-and-offensive-language
+    - should talk about how it was computed - see homepage
+    - should talk about it s classes
+    - should talk about the fact that every text is annotated by > 3 ppl
+    - extract info from their papers!!!!
+
+Hate Speech and Offensive Language (HSOL) is a dataset for hate speech detection. The dataset was computed by cross referencing a lexicon of hate speech phrases compiled by Hatesbase.org with data gathered from Twitter. Twitter is known for its light way handling of offensive tweets, thus being a very good and productive source for these kinds of datasets. Twitter API is also more permissive than other social media APIs, allowing developers to easily retrieve data and metrics in order to use them for research purposes. Applying the above mentioned technique, the authors of HSOL managed to gather 85.4 million tweets from 33.458 distinct twitter users. From this corpus, they extracted a random sample of 25k tweets that was later on manually annotated by CrowdFlower(!WHAT IS THIS?) workers. The tweets were labeled as one of the following three categories: 
+    - hate speech
+    - offensive language but not hate speech
+    - neither of them
+In order to obtain a reliable dataset, intercoder agreement was enforced by having any tweet labeled by a minimum of 3 CrowdFlower workers, some isolated cases being labeled by as many as 9 workers. The category of one tweet was decided based on the majority decision. Some tweets were not labeled because of a 50%-50% decision, thus not existing a majority to decide a category for those particular tweets.
+
+!INSERT HSOL BAR PLOT HERE
+
+
+
+
+2.1.2. Hate Speech from a white supremacist forum
+    - https://paperswithcode.com/dataset/hate-speech
+    - https://paperswithcode.com/paper/hate-speech-dataset-from-a-white-supremacy
+    - should talk about how it was computed - see homepage
+    - should talk about it s classes - binary class
+    - should talk about the source of the dataset - neonazist forum
+    - extract info from their papers!!!!
+
+Hate Speech from a white supremacist forum is a dataset of textual hate speech. The dataset was computed by extracting approx. 10.5k sentences from Stormfront, a neo-Nazi and racial hate forum. The extracting process was carried out using web-scraping techniques, the data being arranged by sub-forums, conversation threads and posts. After extracting the data, posts were randomly selected from 22 sub-forums covering diverse topics. An automatic language detector was used in order to skip the non English textual data. The next step involved breaking the posts into sentences allowing to work with the minimum unit of hate speech and reducing the noise from other sentences that could be cleaner. The annotation process was carried out manually, dividing the dataset in batches of aprox. 1000 sentences. According to the authors of the dataset, this decision was taken in order to better control the process of labeling. For experiments that were carried out with this dataset, sentences shorter than 3 words or longer than 50 words were discarded. For this corpus, a 4 class labeling scheme was chosen. The sentences were labeled as one of the following 4 categories
+    -hate
+    -noHate
+    -relation
+    -skip
+Sentences label as "hate" should contain any form of hate speech. The sentences that don not fall under the previously mentioned category should be labeled as "noHate". The sentences labeled as "relation" are usually consecutive posts(of the same user) that do not contain hate speech if interpreted isolated, but their combination does. "Skip" label is used for sentences that are not written in english or that do not contain relevant information in order to be labeled as "hate" or "noHate"
+
+!INSERT BAR PLOT HERE
+
+
+
+2.1.3. OLID (Offensive Language Identification Dataset)
+    - https://paperswithcode.com/dataset/olid
+    - https://scholar.harvard.edu/malmasi/olid
+    - should talk about how it was computed - see homepage
+    - should talk about it s classes - 3 class categories
+    - extract info from their papers!!!!
+
+Offensive Language Identification Dataset (OLID) is a dataset used for identifying not only the offensive language but also the target and type of offensive language in social media texts. The OLID was computed by extracting data from Twitter, the final corpus containing 14.1k tweets divided into a batch for training that contains 13.240 tweets and a batch for testing that contains 860 tweets. The labeling scheme for this dataset is a hierarchical one based on 3 levels.
+
+! INSERT TABLE OF LEVELS FROM PAPER ! - Problem because level 3 does not contain other
+
+The first level involves dividing the tweets in 2 categories: offensive and not-offensive
+The second level aims at further dividing the offensive tweets in 2 categories: targeted and untargeted
+The third level aims at dividing the offensive targeted tweets in 3 categories: individual, group, other.
+
+The relationship between the 3 presented levels is a hierarchial one. An offensive tweet can be targeted or not targeted. If an offensive tweet is targeted, it could be targeted towards a person(individual), group or other entity.

@@ -1,0 +1,125 @@
+In this chaper we provide information about the datasets used for our experiments. We will focus on methods tried and used for data extraction, metrics for the datasets and annotation processes with ephasis on rules and corner cases for every dataset.
+
+3.1.1 RO-OFFENSE
+    - should ask Andrei about it - to give me more information about it
+    - information extraction - de unde, cum, cand, in ce fel
+    - labeling process
+    - should talk about its classes and the labeling rules WITH EXAMPLES
+    - should present metrics about :
+        - train test validate splitting Distribution
+        - features like mean, std dev, etc - see github
+        - classes distribution
+        
+3.1.2 FB-RO-OFFENSE
+
+    -Data extraction
+        - talk about all the trials - wikipedia, local newspapers, etc
+        - talk about political facebook broadcasts wide variety of language
+        - talk about inaboradibility of facebook api -> selenium library
+        - talk about selenium and the method for extraction
+        - talk about all 30k gathered comments and how we narrowed them down to ~8k
+        - talk about labeling the comments:
+            - coarse grained
+            - fine grained
+        - talk about labeling rules and exceptions AND COMPARE IT WITH RO-OFFENSE
+        - train test validate splitting Distribution
+        - features like mean, std dev, etc - see github
+        - classes distribution
+
+--Data extraction. Trials and Methods
+
+Early thoughts on building a dataset were pointed towards using information either from Wikipedia comments or online local newspapers platforms. We considered these 2 options because we knew that these platforms do not filter offensive language, thus being a perfect match for our requirements at a first glance. However, these trials proved to be unsuccessful due to the fact that not that much offensive language was present. Therefore, we considered to gather data from multiple newspapers platforms, not just one. The problem with this approach was that multiple web-scraping methods were required as every platform architecture was different. Another approach that we did not consider at the start of the experiments was gathering data from a social media platform. We knew Twitter does not get to much attention in Romania so focus had to be shifted towards Facebook. Although, Facebook does use offensive language filtering methods, its live broadcasts do not. We had insight that Romanian political figures tend to use a lot of Facebook`s live broadcasting features and that a lot of offensive language is present through those broadcast comments. This seemed like the perfect combination but another brick wall was hit. Unlike other social media APIs, Facebook`s API is a lot more restrictive and obtaining permissions for gathering other people`s information such as comments and reacts was unfortunately not possible. Previous web-scraping experiments with various techniques pointed us in this direction of using the Selenium(!CITE!) library for Python. Selenium is an open source library that can automate browsers. It provides full access to the DOM of a web page, allowing to access any UI element and its information. Besides that, Selenium provides support for interacting with UI elements like buttons and pop-ups.
+
+
+Using the previous mentioned approach we were able to gather as much as 30K comments from over 20 different live broadcasts. We initially set out to build a small dataset with only 3k to 4k entries, but having this much information, that initial thought was not considered anymore. We cross-referenced all the 30k comments with a list of Romanian offensive words and phrases and for every match, we took into consideration the given match and it`s surrounding comments. Further sanitization was performed by choosing comments with a minimum length of (!TODO!) and a maximum one of (!TODO!). After all the sanitization, 8017 entries remained in order to construct the final dataset.
+
+(!INSERT METRICS ABOUT COMMENTS -STD LENG, STD DEV, etc!) - and talk about them!
+(!TODO!  - compare it with RO-Offense in terms of these metrics)
+
+
+The annotation scheme for FB-RO-Offense dataset, addopted from germval(!CITE!), is hierarchical, the first level of annotation being represented by a coarse-grained approach that involves dividing the dataset in 2 categories:
+    - offensive 
+    - other
+
+Although it might seem as a simple task, the tedious part was to decide what level of offensiveness we consider as offensive. One important aspect regarding this dataset is that it was computed during the first phases of the war between Russia and Ukraine. Therefore, this topic was addressed in the majority of the broadcasts and has weighted a lot throughout the labeling process. Having this in mind, we decided to not label as offensive phrases that would refer to leaders or mentalities regarding the 2 countries. Therefore, sentences such as "Esti un putinist", "Esti un rusofil" were not labeled as offensive even though they might come as offensive or insulting to some individuals. Another type of language behavior that we labeled as 'other' is the one of booing. Phrases such as "esti dus cu capul", "generalul lui peste", "mancator de laturi" were also labeled as 'other' because we wanted to keep the level of offensiveness for the offensive category of entries as high as possible.
+The sentences that fall into the 'offensive' class should contain shape of offensive speech such as cursing, insulting, abusing and profanity. Examples for this category of text will be covered in the section for fine grained annotation.
+
+The fine-grained level of annotation involves a further 3-way classification for the offensive comments:
+    - INSULT
+    - ABUSE
+    - PROFANITY
+
+The comments that were considered insult were those light weight targeted curses that would make an individual feel unworthy or disrespected. We labeled as INSULT the following particular cases:
+- any resemblance with an animal: "esti un bou", "sarpe ce esti", "esti o capusa"
+- expressions that do not contain swear words but succeed in making a person feel insulted: "tusea si junghiul", "ai pavilionul bleg", "bai nefericitule", "esti un terminat"
+- sentences that reflect the sender`s anger and contempt towards the receiver: "mars ma de aici!", "iesi", "valea", "hai sictir"
+- usual insults: "esti un fraier", "esti un prost", "dobitocule", "derbedeule"
+
+The comments labeled as ABUSE tend to be more grave than the ones labeled as INSULT. We considered as abusive that language that would offend an individual by associating that individual with a certain identity or group that is negatively judged by the community. Some cases of ABUSE are as follows:
+- racist comments and associations with groups that are negatively perceived by the Romanian community : "esti o cioara borata", "esti un nazist", "esti o curva", "esti un bulangiu", "esti un bastard"
+- sexist comments and any type of sexual harassment: "esti buna la pat!", "e buna rau!" and many more others;
+- references to serious or deadly diseases; ?? sau dau exemple aici?
+- death wishes for a person or its relatives;
+- combinations of curses that refer to hell;
+ 
+In the case of PROFANITY, a comment is not targeted to an individual or a group but contains swear words. This kind of speech would remain unchanged in terms of meaning if the swear words would be left out. Therefore, comments such as "sa moara mamaie ca e adevarat", "ce dracu! iar ploua?" were classified as PROFANITY.
+
+Even though strict rules were considered for the labeling of one class, we also needed to define rules for comments that would contain features from 2 or 3 classes. These are as follows:
+- comments containing both PROFANITY and INSULT features would be labeled as INSULT
+- comments containing both PROFANITY and ABUSE features would be labeled as ABUSE
+- comments containing both INSULT and ABUSE features would be labeled as ABUSE
+
+(!TODO!  - compare it with RO-Offense in terms of the rules)
+
+
+Once the annotation process was carried out, intercoder agreement had to be measured. Firstly, 100 random comments from the dataset were labeled by a different person in order to understand and get used to the rules. Later on, another random batch of 100 comments was extracted in order to be labeled by the same person. Based on these last 100 comments, we obtained an intercoder agreement of (!TODO!) 95\%.
+
+
+Even though the dataset contained 8017 comments, after the annotation process we observed that it was unbalanced in terms of class distribution.
+(!INSERT CLASS DISTRIBUTION FOR THE ENTIRE DATASET!)
+
+(!TODO! interpret the class distribution)
+
+In order to use a more balanced set of data, we kept all the comments labeled as OFFENSE and removed (!TODO!) comments labeled as OTHER. All our experiment were conducted using this distilled dataset of size X.
+
+
+For our experiments, the distiled version of the dataset was statically divided into 3 batches:
+Train batch: 2851 comments (63.99%)
+Validation batch: 713 comments (16%)
+Test batch: 892 comments (20%)
+
+
+
+
+
+3.1.1 RO-OFFENSE
+
+This section proposes a Romanian language dataset build for offensive speech detection. This corpus consists of 12K manually annotated comments extracted from a sports news website. The main principles for building this dataset are as follows:
+- focus on comments that reflects the online interaction on Romanian online platforms
+- vast range of offensive textual data.
+- balanced data
+
+The data was extracted by crawling the comment section of sport website gsp.ro. This action took place in October 2020 and involved collecting all the available comments from 2008 until September 2020. Therefore, a total of 4,958,302 comments were stored. It appeared that the website used some form of text filtering starting from 2015, therefore annotation focus was shifted to comments dating from 2008 until 2015. There were considered only comments-threads with 20 to 50 messages. The selection of the sample was further restricted by choosing comments with a minimum length of 50 characters and a maximum length of 500 characters. Furthermore, comments containing URL`s or phone numbers were discarded. All this sanitization resulted in a pool of 410,000 comments from which 30,000 were selected for the annotation process.
+
+The final annotated dataset consists of 12445 sentences with a length between 50 an 500 characters. It can be observed that the RO-Offense dataset contains much longer entries and, therefore, it is safe to say that our models build upon transfer learning approach will have a certain level of maturity, being able to predict different length inputs.
+
+(!PLOT sentence length distribution!)
+
+This dataset was annotated upon the same schema presented previously for the FB-RO-Offense dataset. Therefore, the classes and granulations of the 2 datasets are identical, allowing us to experiment with a transfer learning approach.
+
+The set of rules for annotation is identical, as it was adopted from the Germval(!CITE!). Anyhow, there are differences between the offensiveness level chosen by the 2 datasets. The RO-Offense dataset contains heavier curses and a vast range of profane words, whereas the FB-RO-Offense dataset contains a lighter form of offensive speech. Therefore, there exists a certain level of discrepancy between the datasets, mainly in the areas of INSULT and ABUSE sentences. 
+We will further present few differences between the 2 focusing on examples and reasons for discrepancy.
+
+(!TABLE  with examples!)
+Type of text | Label in RoOffense | Label in fbROOffense
+esti o mizerie | INSULT | ABUSE
+du-te dracu | INSULT | ABUSE
+esti o javra ordinara | INSULT | ABUSE
+esti un jegos | INSULT | ABUSE
+dute-n p***a ma-tii | INSULT | ABUSE
+
+
+
+Currently, the RO-Offense dataset contains 7,873 offensive messages distributed over the PROFANITY, INSULT and ABUSE class, and 4,572 non-offensive messages, a much higher rate of offensive entries than the one presented by FB-RO-Offense dataset.
+
+(INSERT TABLE 4 from dataset paper)

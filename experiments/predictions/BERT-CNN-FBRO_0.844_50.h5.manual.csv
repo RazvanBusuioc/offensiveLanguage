@@ -1,0 +1,50 @@
+text,prediction,trueLabel
+baga-ti-as surubul in piulita!,OTHER,ABUSE
+sa-ti bag lebarul in sacosa!,OTHER,ABUSE
+ce pula mea mai e de facut in cazul asta?,PROFANITY,PROFANITY
+sa-mi bag pula in toata ma-ta si in mortii ei!,ABUSE,ABUSE
+du-te dracu de aici ca esti chiar dobitoc,ABUSE,ABUSE
+"daca esti prost de mic, cand esti mare doar te joci",INSULT,INSULT
+"mars la cotet, javra ce esti!",ABUSE,ABUSE
+astia chiar ne cred asa prosti?,INSULT,OTHER
+sunteti niste prapaditi!,INSULT,ABUSE
+sa-mi iei ouale in gura!,OTHER,ABUSE
+sa-ti dau tot pixul sa il sugi,ABUSE,ABUSE
+grijania mă-tii de copil,ABUSE,ABUSE
+sa iti iau mortii la dans!,ABUSE,ABUSE
+sa-mi iei p..a in gura,ABUSE,ABUSE
+sa-mi iei pu....l..a in gura,ABUSE,ABUSE
+ce bozgoer esti...,INSULT,ABUSE
+esti un bolsevic,ABUSE,ABUSE
+ma-ta este foarte frumoasa!,OTHER,OTHER
+sa-ti bag banii la cec!,OTHER,ABUSE
+canta-mi-ai la ce atarna,INSULT,ABUSE
+sa-mi lingi banana!,OTHER,ABUSE
+sa-mi fac schiuri din crucea ma-tii,ABUSE,ABUSE
+vopsi-mi-ai ouale!,ABUSE,ABUSE
+Manca-mi-ai fleașca,ABUSE,ABUSE
+Du-te-n puii mei,INSULT,INSULT
+Ceașcă mătii,INSULT,ABUSE
+Manca-mi-ai ciocolata,OTHER,ABUSE
+Manca-mi-ai cacatul,ABUSE,ABUSE
+Mai du-te-n ceapa matii,ABUSE,ABUSE
+Culca-te-ar vaca,INSULT,ABUSE
+Naiba sa te ia,OTHER,ABUSE
+Fura-te-ar țiganii,INSULT,ABUSE
+Sa ma iei de pițigoi ,INSULT,ABUSE
+Calca-te-ar trenul,OTHER,OTHER
+Crizata naibii ,INSULT,INSULT
+Sa te duci în originile tale ancestrale,OTHER,ABUSE
+Pitica nenorocita,ABUSE,INSULT
+Ești mic dar ai mare manipulare,INSULT,OTHER
+ce i-as face un copil mamei tale,OTHER,ABUSE
+facea-ti-as un fratior,OTHER,ABUSE
+manca-ti-am toti coliva!,ABUSE,ABUSE
+esti un mare ha..n..di..ca...pat,INSULT,INSULT
+"mama ce te-as lua o tura, fa",PROFANITY,ABUSE
+da-o-n pula mea de treaba...,ABUSE,PROFANITY
+"mi-as dori, daca se poate, sa imi iei coaiele in gura",OTHER,ABUSE
+daca ai putea sa imi pupi surubul.. ce bine ar fi,OTHER,ABUSE
+sa ne-o iei la toti in gura,OTHER,ABUSE
+ai capul mare dar nici creierul nu sta inghesuit,INSULT,INSULT
+sa te futa americanii!,INSULT,ABUSE

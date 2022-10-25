@@ -1,0 +1,124 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  padding-left: 500px;
+  padding-right: 500px;
+  gap: 30px;
+  margin-top: 56px;
+}
+
+.logos {
+  display: flex;
+  flex-direction: row;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 56px;
+  padding-right: 56px;
+  justify-content: space-between;
+}
+
+.upbLogo {
+  width: 136px;
+  height: 136px;
+}
+
+.acsLogo {
+  width: 304px;
+  height: 136px;
+}
+
+.title {
+  text-align: center;
+}
+
+.chat {
+  padding-top: 36px;
+  padding-bottom: 36px;
+  padding-left: 56px;
+  padding-right: 56px;
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  background-color: #ecebeb;
+  height: 450px;
+  justify-content: space-between;
+}
+
+.chatMessageLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.chatMessageRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.chatMessages {
+  display: flex;
+  flex-direction: column;
+  gap:32px;
+  overflow-y:auto
+}
+
+.chatMessage {
+  padding: 16px;
+  width: max-content;
+  max-width: 456px;
+  background-color: #547CCC;
+}
+
+.chatMessageLeft > .chatMessage {
+  border-radius: 0px 15px 15px 15px;
+}
+
+.chatMessageRight > .chatMessage {
+  border-radius: 15px 0px 15px 15px;
+}
+
+.profanity {
+  background-color: #D65DB1 !important;
+  filter:blur(4px);
+}
+
+.profanity:hover, .insult:hover, .abuse:hover {
+  filter:blur(0)
+}
+
+.insult {
+  background-color: #FF9671 !important;
+  filter:blur(4px);
+}
+
+.abuse {
+  background-color: #FF6F91 !important;
+  filter:blur(4px);
+}
+
+.chatForm {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+
+.formInput {
+  height: 27px;
+  width: 100%;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.submitButton {
+  border-radius: 5px;
+}
+
+.submitLogo {
+  height: 24px;
+  width: 24px;
+}
